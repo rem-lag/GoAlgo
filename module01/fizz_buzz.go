@@ -16,34 +16,17 @@ import (
 // `fmt` package and print to standard out.
 // I wouldn't normally recommend this, but did
 // it here to make life easier for beginners.
-// func FizzBuzz(n int) {
-// 	for i := 1; i <= n; i++ {
-// 		if i%3 == 0 {
-// 			if i%5 != 0 {
-// 				fmt.Println("Fizz")
-// 			} else {
-// 				fmt.Println("Fizz Buzz")
-// 			}
-// 		} else if i%5 == 0 {
-// 			fmt.Println("Buzz")
-// 		} else {
-// 			fmt.Println(i)
-// 		}
-// 	}
-// }
 
-func FizzBuzz(n int) {
+func FizzBuzzStart(n int) {
 	var s strings.Builder
 
 	for i := 1; i <= n; i++ {
-		if i%3 == 0 {
-			if i%5 != 0 {
-				s.WriteString("Fizz")
-			} else {
-				s.WriteString("Fizz Buzz")
-			}
+		if i%3 == 0 && i%5 == 0 {
+			s.WriteString("Fizz Buzz")
 		} else if i%5 == 0 {
 			s.WriteString("Buzz")
+		} else if i%3 == 0 {
+			s.WriteString("Fizz")
 		} else {
 			s.WriteString(strconv.Itoa(i))
 		}
@@ -53,4 +36,39 @@ func FizzBuzz(n int) {
 	}
 
 	fmt.Println(s.String())
+}
+
+type FizzBuzzes struct {
+	fizz int
+	buzz int
+}
+
+func FizzBuzz(n int) {
+	sb := new(strings.Builder)
+	fizzbuzz := FizzBuzzes{
+		fizz: 3,
+		buzz: 5,
+	}
+
+	for i := 1; i <= n; i++ {
+		BuildString(i, fizzbuzz, sb)
+		if i < n {
+			sb.WriteString(", ")
+		}
+	}
+
+	fmt.Println(sb.String())
+}
+
+func BuildString(i int, fb FizzBuzzes, sb *strings.Builder) {
+
+	if i%fb.fizz == 0 && i%fb.buzz == 0 {
+		sb.WriteString("Fizz Buzz")
+	} else if i%fb.fizz == 0 {
+		sb.WriteString("Fizz")
+	} else if i%fb.buzz == 0 {
+		sb.WriteString("Buzz")
+	} else {
+		sb.WriteString(strconv.Itoa(i))
+	}
 }
