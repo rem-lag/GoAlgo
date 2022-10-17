@@ -1,6 +1,10 @@
 package module01
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 // FizzBuzz will print out all of the numbers
 // from 1 to N replacing any divisible by 3
@@ -12,14 +16,41 @@ import "fmt"
 // `fmt` package and print to standard out.
 // I wouldn't normally recommend this, but did
 // it here to make life easier for beginners.
+// func FizzBuzz(n int) {
+// 	for i := 1; i <= n; i++ {
+// 		if i%3 == 0 {
+// 			if i%5 != 0 {
+// 				fmt.Println("Fizz")
+// 			} else {
+// 				fmt.Println("Fizz Buzz")
+// 			}
+// 		} else if i%5 == 0 {
+// 			fmt.Println("Buzz")
+// 		} else {
+// 			fmt.Println(i)
+// 		}
+// 	}
+// }
+
 func FizzBuzz(n int) {
-	if n%3 == 0 {
-		if n%5 != 0 {
-			fmt.Println("Fizz")
+	var s strings.Builder
+
+	for i := 1; i <= n; i++ {
+		if i%3 == 0 {
+			if i%5 != 0 {
+				s.WriteString("Fizz")
+			} else {
+				s.WriteString("Fizz Buzz")
+			}
+		} else if i%5 == 0 {
+			s.WriteString("Buzz")
 		} else {
-			fmt.Println("Fizz Buzz")
+			s.WriteString(strconv.Itoa(i))
 		}
-	} else if n%5 == 0 {
-		fmt.Println("Buzz")
+		if i < n {
+			s.WriteString(", ")
+		}
 	}
+
+	fmt.Println(s.String())
 }
