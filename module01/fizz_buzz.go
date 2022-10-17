@@ -22,5 +22,4 @@ func FizzBuzz(n int) {
 	} else if n%5 == 0 {
 		fmt.Println("Buzz")
 	}
-
 }
