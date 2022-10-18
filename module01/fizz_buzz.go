@@ -50,25 +50,23 @@ func FizzBuzz(n int) {
 		buzz: 5,
 	}
 
-	for i := 1; i <= n; i++ {
-		BuildString(i, fizzbuzz, sb)
-		if i < n {
-			sb.WriteString(", ")
-		}
+	for i := 1; i < n; i++ {
+		BuildString(i, fizzbuzz, ", ", sb)
 	}
 
-	fmt.Println(sb.String())
+	BuildString(n, fizzbuzz, "\n", sb)
+	fmt.Print(sb.String())
 }
 
-func BuildString(i int, fb FizzBuzzes, sb *strings.Builder) {
-
-	if i%fb.fizz == 0 && i%fb.buzz == 0 {
-		sb.WriteString("Fizz Buzz")
+func BuildString(i int, fb FizzBuzzes, sep string, sb *strings.Builder) {
+	fab := fb.fizz * fb.buzz
+	if i%fab == 0 {
+		sb.WriteString("Fizz Buzz" + sep)
 	} else if i%fb.fizz == 0 {
-		sb.WriteString("Fizz")
+		sb.WriteString("Fizz" + sep)
 	} else if i%fb.buzz == 0 {
-		sb.WriteString("Buzz")
+		sb.WriteString("Buzz" + sep)
 	} else {
-		sb.WriteString(strconv.Itoa(i))
+		sb.WriteString(strconv.Itoa(i) + sep)
 	}
 }
