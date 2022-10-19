@@ -17,27 +17,6 @@ import (
 // I wouldn't normally recommend this, but did
 // it here to make life easier for beginners.
 
-func FizzBuzzStart(n int) {
-	var s strings.Builder
-
-	for i := 1; i <= n; i++ {
-		if i%3 == 0 && i%5 == 0 {
-			s.WriteString("Fizz Buzz")
-		} else if i%5 == 0 {
-			s.WriteString("Buzz")
-		} else if i%3 == 0 {
-			s.WriteString("Fizz")
-		} else {
-			s.WriteString(strconv.Itoa(i))
-		}
-		if i < n {
-			s.WriteString(", ")
-		}
-	}
-
-	fmt.Println(s.String())
-}
-
 type FizzBuzzes struct {
 	fizz int
 	buzz int
@@ -69,4 +48,26 @@ func BuildString(i int, fb FizzBuzzes, sep string, sb *strings.Builder) {
 	} else {
 		sb.WriteString(strconv.Itoa(i) + sep)
 	}
+}
+
+// mvp
+func FizzBuzzStart(n int) {
+	var s strings.Builder
+
+	for i := 1; i <= n; i++ {
+		if i%3 == 0 && i%5 == 0 {
+			s.WriteString("Fizz Buzz")
+		} else if i%5 == 0 {
+			s.WriteString("Buzz")
+		} else if i%3 == 0 {
+			s.WriteString("Fizz")
+		} else {
+			s.WriteString(strconv.Itoa(i))
+		}
+		if i < n {
+			s.WriteString(", ")
+		}
+	}
+
+	fmt.Println(s.String())
 }
