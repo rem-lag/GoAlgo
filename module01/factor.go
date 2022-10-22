@@ -20,7 +20,24 @@ package module01
 //	Factor([2,5], 30) // []int{2,5,3}
 //	Factor([3,5], 720) // []int{3,3,5,16}
 //	Factor([], 4) // []int{4}
+
 func Factor(primes []int, number int) []int {
+	facts := []int{}
+
+	for _, p := range primes {
+		for number%p == 0 {
+			number = number / p
+			facts = append(facts, p)
+		}
+	}
+	if number > 1 {
+		facts = append(facts, number)
+	}
+
+	return facts
+}
+
+func FactorSlower(primes []int, number int) []int {
 	facts := []int{}
 
 	for number != 1 {
