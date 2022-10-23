@@ -1,4 +1,4 @@
-package module02_test
+package module02
 
 import (
 	"algo/module02/sorttest"
