@@ -2,7 +2,27 @@ package module01
 
 import "math"
 
+// Euclidean algorithm
+// with recursion
 func GCD(a, b int) int {
+	if b == 0 {
+		return a
+	} else {
+		return GCD(b, a%b)
+	}
+}
+
+// Euclidean algorithm
+// with iteration
+func GCDI(a, b int) int {
+	for b != 0 {
+		a, b = b, a%b
+	}
+	return a
+}
+
+// using prime factors
+func GCDF(a, b int) int {
 	primes := returnPrimes()
 	af := Factor(primes, a)
 	bf := Factor(primes, b)
@@ -24,12 +44,4 @@ func GCD(a, b int) int {
 	}
 
 	return gcd
-}
-
-func GCDE(a, b int) int {
-	if b == 0 {
-		return a
-	} else {
-		return GCD(b, a%b)
-	}
 }
