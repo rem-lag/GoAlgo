@@ -23,7 +23,7 @@ func GCDI(a, b int) int {
 
 // using prime factors
 func GCDF(a, b int) int {
-	primes := returnPrimes()
+	primes := ReturnPrimes()
 	af := Factor(primes, a)
 	bf := Factor(primes, b)
 	ac, bc := make(map[int]int), make(map[int]int)
